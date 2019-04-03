@@ -35,7 +35,6 @@ public:
 	}
 
 	void reverse();
-	void reverseInt();
 	void toInt();
 	void print();
 	void printInt();
@@ -65,14 +64,6 @@ void character::toInt()
 	}
 }
 
-void character::reverseInt() 
-{
-	toInt();
-	for (int i = 3; i >=0; i--)
-	{
-		
-	}
-}
 
 void character::printInt()
 {
