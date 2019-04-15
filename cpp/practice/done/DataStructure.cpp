@@ -53,7 +53,7 @@ int main()
 
 /*
 //complex stack
-//stack
+//point stack
 const int maxSize = 1000;
 int stack[maxSize][2];
 int top = 0;
