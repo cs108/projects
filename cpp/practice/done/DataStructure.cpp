@@ -49,3 +49,28 @@ int main()
 	cout << '\''<<c <<'\''<< endl;
 	return 0;
 }
+
+
+/*
+//complex stack
+//stack
+const int maxSize = 1000;
+int stack[maxSize][2];
+int top = 0;
+#define PUSH(x,y) stack[top][0]=x,stack[top++][1]=y
+#define POP(x,y) x=stack[--top][0],y=stack[top][1]
+#define SFULL (top==maxSize)
+#define SEMPTY (top==0)
+
+void main()
+{
+	for (int i = 0; i < 10; i++)
+		PUSH(i, i);
+	int a = 0, b = 0;
+	while (!SEMPTY)
+	{
+		POP(a, b);
+		cout << '(' << a << ',' << b << ')' << endl;
+	}
+}
+*/
