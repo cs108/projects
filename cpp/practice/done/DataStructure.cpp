@@ -1,5 +1,5 @@
 /*
-Simple data structure implimentarion.
+Simple data structure implimentation.
 */
 #include<iostream>
 
