@@ -1,4 +1,7 @@
-//this file can be easily converted into c file
+/*
+this is a simple dfs question
+this file can be easily converted into c file
+*/
 #include<iostream>
 
 using namespace std;
