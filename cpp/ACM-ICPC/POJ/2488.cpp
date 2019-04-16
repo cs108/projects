@@ -45,17 +45,17 @@ void dfs(int x, int y)
 		return;
 	}
 
-	for (int d = 0; d < 8; d++)
+	for (int d = 0; d < 8; d++)  //try different searching direction if task not finished
 	{
 		int x2, y2;
 		x2 = x + m[d][0];
 		y2 = y + m[d][1];
-		if (x2 >= 0 && y2 >= 0 && x2 < p&&y2 < q&&v[x2][y2]==0)
+		if (x2 >= 0 && y2 >= 0 && x2 < p&&y2 < q&&v[x2][y2]==0) //if this direction is leagal and not visited
 		{
 			SPUSH(x2, y2);
 			v[x2][y2] = 1;
-			dfs(x2, y2);
-			if (!succ)
+			dfs(x2, y2); //go deeper from this new start point
+			if (!succ)   //if this direction didn't lead to a exact end
 			{
 				v[x2][y2] = 0;
 				SPOP(x2, y2);
@@ -83,10 +83,10 @@ int main()
 	{
 		init();
 		cin >> p >> q;
-		int x = 0, y = 0;
+		int x = 0, y = 0;  //set root as (0,0)
 		SPUSH(x, y);
 		v[x][y] = 1;
-		dfs(x, y);
+		dfs(x, y);        //start dfs from root
 		cout << "Scenario #" << count++ << ":" << endl;
 		if (succ)
 		{
