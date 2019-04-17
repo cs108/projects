@@ -8,7 +8,7 @@ using namespace std;
 const int BITS = 100;
 
 class bigInt {
-	 unsigned int a[BITS] = {0};
+	 unsigned int a[BITS];
 
 public:
 	bigInt()
@@ -25,9 +25,9 @@ public:
 		return result;
 	}
 
-	bigInt operator*(int n)
+	bigInt operator*(int n)  //a=b*a ; n is going to be that b
 	{
-		int b[10] = { 0 };
+		int b[10] = { 0 }; //yes,that b
 		int bLength;
 		if (n < 10)
 		{
@@ -38,7 +38,7 @@ public:
 		{
 			for (int i = 0; n != 0; b[i] = n % 10, n /= 10,bLength++);
 		}
-		unsigned int c[BITS][BITS] = { 0 };
+		unsigned int c[BITS][BITS] = { 0 }; //middle result of b*a
 		unsigned int carry[BITS + 10] = { 0 };
 		for (int ia = 0; ia < BITS; ia++)//ia : index of a
 		{
