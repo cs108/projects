@@ -10,7 +10,7 @@ int front, rear;
 #define QOUT(x,t) x=que[front%qSize][0],t=que[front%qSize][1],front++
 #define QEMPTY (front%qSize==rear%qSize)
 
-int N, K, T;
+int N, K, T;  // T stands for time
 const int MIN = 0, MAX = 100001;
 int shortest = MAX;
 int v[MAX] = { 0 };
