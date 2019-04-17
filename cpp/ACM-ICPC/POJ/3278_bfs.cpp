@@ -1,3 +1,10 @@
+/*
+Although it has been accepted by POJ,
+there is a big question in the design of code.
+If you test it with "0 100000" or somthing simillar,
+stack overflow would occur due to its recursive searching design.
+However, if you follow normal bfs design with no recursive searching, this would never happen.
+*/
 #include <iostream>
 
 using namespace std;
