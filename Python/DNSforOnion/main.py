@@ -3,6 +3,8 @@
 Created on Sat Jan 26 10:35:54 2019
 
 @author: cs108
+
+Python interpreter version: 32bit
 """
 
 from Crypto.PublicKey import RSA
