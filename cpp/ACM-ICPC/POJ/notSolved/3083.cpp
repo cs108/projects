@@ -1,6 +1,10 @@
 /*
 Hard to fix this source code.
 I'd rather write a new solution than fix it.
+
+The same day I figured out a new solution and was Accepted by POJ,
+and of course I uploaded source code to project/.../POJ/Solved,
+but I decided not to remove this file in case I someday somehow wanted to know how I made a simple question so complicated.
 */
 #include<iostream>
 #include<stdio.h>
