@@ -37,7 +37,7 @@ void BFS()
 	QIN(src, 0);
 	v[src] = 1;
 	bfs_succ = 0;
-	while (!QEMPTY&&!bfs_succ)
+	while (!QEMPTY)
 	{
 		int num, step;
 		QOUT(num, step);
