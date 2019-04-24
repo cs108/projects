@@ -58,8 +58,8 @@ void BFS()
 				mod *= 10;
 			bit[i] = (num / mod) % 10;
 		}
-		//change 1
-
+		
+		//change bits
 		for (int i = 0; i < 4; i++)
 		{
 			int bit2[4];
