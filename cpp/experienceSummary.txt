@@ -1,0 +1,3 @@
+  Capacity of array is limited. Once I declared "char v[1000000][100]", visual studio 2015 faild to run exe and return error "0x800700c1",
+and that exe would never be run again even if you changed the capacity. You can change the capacity and click 
+"generate->re-generate exename" to make that exe available again.
