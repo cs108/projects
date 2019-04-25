@@ -5,18 +5,28 @@ So I changed all "nullptr" into "NULL" and submitted again, only to be told that
 I guess the C++ compiler that POJ use is out of date, which even wouldn't recognize "nullptr".
 */
 
+/*
+Sample Input
+3 5 4
+
+Sample Output
+6
+FILL(2)
+POUR(2,1)
+DROP(1)
+POUR(2,1)
+FILL(2)
+POUR(2,1)
+*/
 #include <iostream>
 
 using namespace std;
 
 //stack
 const int sSize = 2000;
-const int StrLen = 100;
-char stack[sSize][20];
+const int StrLen = 20;
+char stack[sSize][StrLen];
 int top = 0;
-
-
-
 
 
 //que
@@ -73,7 +83,7 @@ class node{
 public:
 	node *father;
 	char *op;
-	char Str[20];
+	char Str[StrLen];
 	node *self;
 	node() {};
 	node(node *f, char *o, node *s)
@@ -81,7 +91,7 @@ public:
 		father = f;
 		self = s;
 		op = o;
-		for (int i = 0; i < 20; i++)
+		for (int i = 0; i < StrLen; i++)
 			Str[i] = *(op + i);
 	}
 
@@ -211,7 +221,7 @@ int main()
 		cout <<  T << endl;
 		while (lastNode->father != NULL)
 		{
-			for (int i = 0; i < 20; i++)
+			for (int i = 0; i < StrLen; i++)
 			{
 				stack[top][i] = lastNode->Str[i];
 			}
@@ -220,14 +230,11 @@ int main()
 		}
 		while (top != 0)
 		{
-			top--;
-			cout << stack[top] << endl;
+			cout << stack[--top] << endl;
 		}
 	}
 	else
 		cout << "impossible" << endl;
-
-
 
 	//fclose(stdin);
 }
