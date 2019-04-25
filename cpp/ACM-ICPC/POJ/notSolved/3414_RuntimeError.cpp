@@ -63,7 +63,7 @@ void POUR(int i, int j)
 	}
 }
 
-void set(int a,int b)
+void set(int a,int b)  //used for recover
 {
 	water_left[A] = a;
 	water_left[B] = b;
