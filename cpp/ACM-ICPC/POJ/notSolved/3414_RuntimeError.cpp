@@ -8,7 +8,6 @@ I guess the C++ compiler that POJ use is out of date, which even wouldn't recogn
 /*
 Sample Input
 3 5 4
-
 Sample Output
 6
 FILL(2)
@@ -82,6 +81,7 @@ void set(int a, int b)  //used for recover
 	water_left[B] = b;
 }
 
+
 class node {
 public:
 	node *father;
@@ -122,7 +122,6 @@ void BFS()
 		int a, b, t, father;
 		QOUT(a, b, t, father);
 		//printf("QOUT(%d,%d,%d)\n", a, b, t);
-		set(a, b);
 		if (a == C || b == C)
 		{
 			bfs_succ = 1;
@@ -131,86 +130,29 @@ void BFS()
 			return;
 		}
 		int a2, b2;
-		//try fill
-		//fill a
-		seq++;
-		FILL(A);
-		a2 = water_left[A];
-		b2 = water_left[B];
-		if (v[a2][b2] == 0)
+		for (int i = 0; i < 6; i++)  //6 kinds of action
 		{
-			v[a2][b2] = 1;
-			node *n = new node((node *)father, "FILL(1)");
-			QIN(a2, b2, t + 1, int(n->self()));
-			//printf("fill a QIN(%d,%d,%d) seq=%d\n", a2, b2, t + 1,seq);
-		}
-		set(a, b);
-		//fill b
-		seq++;
-		FILL(B);
-		a2 = water_left[A];
-		b2 = water_left[B];
-		if (v[a2][b2] == 0)
-		{
-			v[a2][b2] = 1;
-			node *n = new node((node *)father, "FILL(2)");
-			QIN(a2, b2, t + 1, int(n->self()));
-			//printf("fill b QIN(%d,%d,%d)  seq=%d\n", a2, b2, t + 1,seq);
-		}
-		set(a, b);
-
-		//try drop
-		//drop a
-		seq++;
-		DROP(A);
-		a2 = water_left[A];
-		b2 = water_left[B];
-		if (v[a2][b2] == 0)
-		{
-			v[a2][b2] = 1;
-			node *n = new node((node *)father, "DROP(1)");
-			QIN(a2, b2, t + 1, int(n->self()));
-			//printf("drop a QIN(%d,%d,%d) seq=%d\n", a2, b2, t + 1,seq);
-		}
-		set(a, b);
-		//drop b
-		seq++;
-		DROP(B);
-		a2 = water_left[A];
-		b2 = water_left[B];
-		if (v[a2][b2] == 0)
-		{
-			v[a2][b2] = 1;
-			node *n = new node((node *)father, "DROP(2)");
-			QIN(a2, b2, t + 1, int(n->self()));
-			//printf("drop b QIN(%d,%d,%d) seq=%d\n", a2, b2, t + 1,seq);
-		}
-		set(a, b);
-
-		//pour a,b
-		seq++;
-		POUR(A, B);
-		a2 = water_left[A];
-		b2 = water_left[B];
-		if (v[a2][b2] == 0)
-		{
-			v[a2][b2] = 1;
-			node *n = new node((node *)father, "POUR(1,2)");
-			QIN(a2, b2, t + 1, int(n->self()));
-			//printf("pour a b QIN(%d,%d,%d) seq=%d \n", a2, b2, t + 1,seq);
-		}
-		set(a, b);
-
-		//pour b,a
-		POUR(B, A);
-		a2 = water_left[A];
-		b2 = water_left[B];
-		if (v[a2][b2] == 0)
-		{
-			v[a2][b2] = 1;
-			node *n = new node((node *)father, "POUR(2,1)");
-			QIN(a2, b2, t + 1, int(n->self()));
-			//printf("pour b a QIN(%d,%d,%d)  seq=%d\n", a2, b2, t + 1,seq);
+			seq++;
+			set(a, b);
+			char *sp;
+			switch (i)
+			{
+			case 0:FILL(A); sp = "FILL(1)"; break;
+			case 1:FILL(B); sp = "FILL(2)"; break;
+			case 2:DROP(A); sp = "DROP(1)"; break;
+			case 3:DROP(B); sp = "DROP(2)"; break;
+			case 4:POUR(A, B); sp = "POUR(1,2)"; break;
+			case 5:POUR(B, A); sp = "POUR(2,1)"; break;
+			}
+			a2 = water_left[A];
+			b2 = water_left[B];
+			if (v[a2][b2] == 0)
+			{
+				v[a2][b2] = 1;
+				node *n = new node((node *)father, sp);
+				QIN(a2, b2, t + 1, int(n->self()));
+				//printf("fill a QIN(%d,%d,%d) seq=%d\n", a2, b2, t + 1,seq);
+			}
 		}
 	}
 }
@@ -245,4 +187,3 @@ int main()
 
 	//fclose(stdin);
 }
-
