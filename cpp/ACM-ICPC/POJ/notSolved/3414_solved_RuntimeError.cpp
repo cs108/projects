@@ -3,6 +3,11 @@ I ran it on my computer with visual studio 2015 and there was nothing wrong usin
 But when I submitted it to POJ, it told me that "nullptr" is not defined.
 So I changed all "nullptr" into "NULL" and submitted again, only to be told that there was Runtime Error.
 I guess the C++ compiler that POJ use is out of date, which even wouldn't recognize "nullptr".
+
+
+I constructed the code and used array rather than object to store data the day after, 
+and there was no more Runtime Error found by POJ.
+I decide to upload that solution which was Accepted by POJ meanwhile keep this file.
 */
 
 /*
