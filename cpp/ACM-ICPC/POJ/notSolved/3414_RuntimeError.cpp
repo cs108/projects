@@ -235,8 +235,7 @@ int main()
 		}
 		while (top != 0)
 		{
-			top--;
-			cout << stack[top] << endl;
+			cout << stack[--top] << endl;
 		}
 	}
 	else
