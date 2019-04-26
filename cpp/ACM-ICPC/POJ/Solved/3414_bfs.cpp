@@ -169,6 +169,15 @@ void print()
 }
 
 
+void print2()   //recursive version of print. looks cool without stack.
+{
+	int index = lastNodeSeq;
+	if (lastNodeSeq = fseqArr[lastNodeSeq])
+		print2();
+	cout << StrArr[index]<<endl;
+}
+
+
 int main()
 {
 	//freopen("sample_input.txt", "r", stdin);
@@ -177,7 +186,7 @@ int main()
 	if (bfs_succ)
 	{
 		cout << T << endl;
-		print();
+		print(); //or print2();
 	}
 	else
 		cout << "impossible" << endl;
