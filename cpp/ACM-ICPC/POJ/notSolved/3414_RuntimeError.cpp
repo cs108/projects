@@ -149,7 +149,7 @@ void BFS()
 			if (v[a2][b2] == 0)
 			{
 				v[a2][b2] = 1;
-				node *n = new node((node *)father, sp);
+				node *n = new node((node *)father, sp);   //never delete --> memory leak
 				QIN(a2, b2, t + 1, int(n->self()));
 				//printf("fill a QIN(%d,%d,%d) seq=%d\n", a2, b2, t + 1,seq);
 			}
