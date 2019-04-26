@@ -29,6 +29,9 @@ char stack[sSize][StrLen];
 int top = 0;
 
 
+
+
+
 //que
 const int qSize = 1000;
 int que[qSize][4];
@@ -73,23 +76,26 @@ void POUR(int i, int j)
 	}
 }
 
-void set(int a,int b)  //used for recover
+void set(int a, int b)  //used for recover
 {
 	water_left[A] = a;
 	water_left[B] = b;
 }
 
-class node{
+class node {
 public:
 	node *father;
 	char *op;
 	char Str[StrLen];
-	node *self;
+	node *self()
+	{
+		return this;
+	};
 	node() {};
-	node(node *f, char *o, node *s)
+	node(node *f, char *o)
 	{
 		father = f;
-		self = s;
+		//self = s;
 		op = o;
 		for (int i = 0; i < StrLen; i++)
 			Str[i] = *(op + i);
@@ -107,15 +113,15 @@ void BFS()
 	node *np = new node();
 	np->father = NULL;
 	np->op = "";
-	np->self = np;
-	QIN(0, 0,0,int(np->self));
+	//np->self = np;
+	QIN(0, 0, 0, int(np->self()));
 	v[0][0] = 1;
 	int seq = 0; //not in use.only used to test
 	while (!QEMPTY)
 	{
-		int a, b,t,father;
-		QOUT(a, b,t,father);
-//printf("QOUT(%d,%d,%d)\n", a, b, t);
+		int a, b, t, father;
+		QOUT(a, b, t, father);
+		//printf("QOUT(%d,%d,%d)\n", a, b, t);
 		set(a, b);
 		if (a == C || b == C)
 		{
@@ -126,7 +132,7 @@ void BFS()
 		}
 		int a2, b2;
 		//try fill
-		  //fill a
+		//fill a
 		seq++;
 		FILL(A);
 		a2 = water_left[A];
@@ -134,13 +140,12 @@ void BFS()
 		if (v[a2][b2] == 0)
 		{
 			v[a2][b2] = 1;
-			node *n = new node();
-			n = new node((node *)father,"FILL(1)",n);
-			QIN(a2, b2,t+1,int(n));
-//printf("fill a QIN(%d,%d,%d) seq=%d\n", a2, b2, t + 1,seq);
+			node *n = new node((node *)father, "FILL(1)");
+			QIN(a2, b2, t + 1, int(n->self()));
+			//printf("fill a QIN(%d,%d,%d) seq=%d\n", a2, b2, t + 1,seq);
 		}
 		set(a, b);
-		  //fill b
+		//fill b
 		seq++;
 		FILL(B);
 		a2 = water_left[A];
@@ -148,14 +153,14 @@ void BFS()
 		if (v[a2][b2] == 0)
 		{
 			v[a2][b2] = 1;
-			node *n = new node(); n = new node((node *)father, "FILL(2)", n);
-			QIN(a2, b2,t+1,int(n));
-//printf("fill b QIN(%d,%d,%d)  seq=%d\n", a2, b2, t + 1,seq);
+			node *n = new node((node *)father, "FILL(2)");
+			QIN(a2, b2, t + 1, int(n->self()));
+			//printf("fill b QIN(%d,%d,%d)  seq=%d\n", a2, b2, t + 1,seq);
 		}
 		set(a, b);
 
 		//try drop
-		  //drop a
+		//drop a
 		seq++;
 		DROP(A);
 		a2 = water_left[A];
@@ -163,12 +168,12 @@ void BFS()
 		if (v[a2][b2] == 0)
 		{
 			v[a2][b2] = 1;
-			node *n = new node(); n = new node((node *)father, "DROP(1)", n);
-			QIN(a2, b2,t+1,int(n));
-//printf("drop a QIN(%d,%d,%d) seq=%d\n", a2, b2, t + 1,seq);
+			node *n = new node((node *)father, "DROP(1)");
+			QIN(a2, b2, t + 1, int(n->self()));
+			//printf("drop a QIN(%d,%d,%d) seq=%d\n", a2, b2, t + 1,seq);
 		}
 		set(a, b);
-		  //drop b
+		//drop b
 		seq++;
 		DROP(B);
 		a2 = water_left[A];
@@ -176,9 +181,9 @@ void BFS()
 		if (v[a2][b2] == 0)
 		{
 			v[a2][b2] = 1;
-			node *n = new node(); n = new node((node *)father, "DROP(2)", n);
-			QIN(a2, b2,t+1,int(n));
-//printf("drop b QIN(%d,%d,%d) seq=%d\n", a2, b2, t + 1,seq);
+			node *n = new node((node *)father, "DROP(2)");
+			QIN(a2, b2, t + 1, int(n->self()));
+			//printf("drop b QIN(%d,%d,%d) seq=%d\n", a2, b2, t + 1,seq);
 		}
 		set(a, b);
 
@@ -190,9 +195,9 @@ void BFS()
 		if (v[a2][b2] == 0)
 		{
 			v[a2][b2] = 1;
-			node *n = new node(); n = new node((node *)father, "POUR(1,2)", n);
-			QIN(a2, b2,t+1,int(n));
-//printf("pour a b QIN(%d,%d,%d) seq=%d \n", a2, b2, t + 1,seq);
+			node *n = new node((node *)father, "POUR(1,2)");
+			QIN(a2, b2, t + 1, int(n->self()));
+			//printf("pour a b QIN(%d,%d,%d) seq=%d \n", a2, b2, t + 1,seq);
 		}
 		set(a, b);
 
@@ -203,9 +208,9 @@ void BFS()
 		if (v[a2][b2] == 0)
 		{
 			v[a2][b2] = 1;
-			node *n = new node(); n = new node((node *)father, "POUR(2,1)", n);
-			QIN(a2, b2,t+1,int(n));
-//printf("pour b a QIN(%d,%d,%d)  seq=%d\n", a2, b2, t + 1,seq);
+			node *n = new node((node *)father, "POUR(2,1)");
+			QIN(a2, b2, t + 1, int(n->self()));
+			//printf("pour b a QIN(%d,%d,%d)  seq=%d\n", a2, b2, t + 1,seq);
 		}
 	}
 }
@@ -218,7 +223,7 @@ int main()
 	BFS();
 	if (bfs_succ)
 	{
-		cout <<  T << endl;
+		cout << T << endl;
 		while (lastNode->father != NULL)
 		{
 			for (int i = 0; i < StrLen; i++)
@@ -230,11 +235,15 @@ int main()
 		}
 		while (top != 0)
 		{
-			cout << stack[--top] << endl;
+			top--;
+			cout << stack[top] << endl;
 		}
 	}
 	else
 		cout << "impossible" << endl;
 
+
+
 	//fclose(stdin);
 }
+
