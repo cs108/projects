@@ -6,7 +6,7 @@ But since there is max-times limit, DFS would work efficiently enough as well.
 
 using namespace std;
 
-int R, C; //row,columm
+int R, C; //row,column
 const int vacant_square = 0, block = 1, start = 2, goal = 3;
 const int max_time = 10;
 
