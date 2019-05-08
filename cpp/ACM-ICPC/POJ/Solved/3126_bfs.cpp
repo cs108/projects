@@ -17,6 +17,16 @@ bool isPrime(int x) {
 	bool result = true;
 	if (x == 2)
 		return result;
+	
+	if(!(x&1))return false;
+				/*
+				I added sentence "if(!(x&1))return false;" after I saw how Python standard lib judge prime,
+				and I think that would really save a lot of time when you deal with big number.
+				But then I submitted on POJ only to find that the TIME is still the same.
+				Well, numbers in POJ test case are too small to let this sentence make a different.
+				All numbers POJ test case provides are four-digit primes as it says.
+				*/
+	
 	for (int i = 2; i*i <= x; i++)
 	{
 		if (x%i == 0)
