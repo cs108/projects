@@ -48,3 +48,28 @@ public:
 		return head1;
 	}
 };
+
+/*
+int main()
+{
+	ListNode l1[3] = { 2,4,3 }, l2[3] = {5,6,4};
+
+	for (int i = 0; i < 3; i++)
+	{
+		l1[i].next = l1 + i + 1;
+		l2[i].next = l2 + i + 1;
+	}
+	l1[2].next = nullptr;
+	l2[2].next = nullptr;
+	Solution s1;
+	ListNode *l3;
+	l3=s1.addTwoNumbers(l1, l2);
+	while (l3!=nullptr)
+	{
+		std::cout << l3->val << '\t';
+		l3 = l3->next;
+	}
+	std::cout << std::endl;
+	return 0;
+}
+*/
